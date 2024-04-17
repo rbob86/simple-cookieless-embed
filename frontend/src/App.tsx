@@ -79,8 +79,10 @@ function App() {
   // function.
   return (
     <div className="App">
+      <button className="btn" onClick={loadDashboard}>
+        Load Dashboard
+      </button>
       <div id="dashboard" className="embed-dashboard"></div>
-      <button onClick={loadDashboard}>Load Dashboard</button>
     </div>
   )
 }
