@@ -28,7 +28,8 @@ function App() {
     // Once authentication completes, we create a dashboard with any ID from the
     // Looker instance being used. The dashboard is attached to the "dashboard"
     // div and it is built
-    LookerEmbedSDK.createDashboardWithId(27)
+    const dashboardId = 27
+    LookerEmbedSDK.createDashboardWithId(dashboardId)
       .appendTo('#dashboard')
       .on('dashboard:loaded', (event: DashboardEvent) => {
         console.log(`Dashboard loaded: ${event}`)

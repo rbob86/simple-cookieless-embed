@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import cookieSession from 'cookie-session'
 import { LookerNodeSDK, NodeSettings } from '@looker/sdk-node'
 import { environmentPrefix } from '@looker/sdk'
 import { user } from './utils'
@@ -20,16 +19,6 @@ app.use(
   }),
 )
 app.use(express.json())
-app.use(
-  cookieSession({
-    maxAge: user.session_length * 1000,
-    name: 'embed_session',
-    secret: (process.env.COOKIE_SECRET || 'secret').padEnd(
-      32,
-      'ABCDEFGHIJKLMNOPQRSTUVWZYZ0123456',
-    ),
-  }),
-)
 
 /**
  * Uses the session to save or restore the session reference token.  If a session reference
@@ -41,7 +30,6 @@ app.get('/acquire-embed-session', async (req: Request, res: Response) => {
   try {
     const userAgent = req.headers['user-agent']
     const session_reference_token = session_reference_store[session_key] ?? ''
-    // req.session && req.session.session_reference_token
     const request = {
       ...user,
       session_reference_token,
@@ -55,7 +43,6 @@ app.get('/acquire-embed-session', async (req: Request, res: Response) => {
       }),
     )
 
-    // req.session!.session_reference_token = response.session_reference_token
     session_reference_store[session_key] =
       response.session_reference_token as string
 
