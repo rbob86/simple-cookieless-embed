@@ -37,16 +37,3 @@ export interface LookerEmbedUser {
   user_timezone?: string | null
   access_filters?: { [key: string]: any }
 }
-
-export interface ApplicationConfig {
-  api_url: string
-  client_id: string
-  client_secret: string
-  demo_host: string
-  demo_port: number
-  host: string
-  secret: string
-  verify_ssl: boolean
-  cookie_secret: string
-  use_embed_domain: boolean
-}

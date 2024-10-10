@@ -2,7 +2,7 @@
 
 ## Overview
 
-This TypeScript-based web app contains a backend server for generating tokens (via the Looker API) that are used to authenticate each cookieless session request. The front end, leveraging the Looker Embed SDK, will call the appropriate backend endpoints and use the responses to embed a Looker dashboard.
+This TypeScript-based web app contains a backend server for generating tokens via the Looker API that are used to authenticate each cookieless session request. The front end, leveraging the Looker Embed SDK, will call the appropriate backend endpoints and use the responses to embed a Looker dashboard (or explore, look, or extension).
 
 ## Installation
 

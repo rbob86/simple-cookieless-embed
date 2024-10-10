@@ -1,17 +1,17 @@
 import {
   DashboardEvent,
-  DashboardTileEvent,
-  DashboardTileExploreEvent,
-  DrillMenuEvent,
-  DrillModalExploreEvent,
-  EnvClientDialogEvent,
-  ExploreEvent,
-  LookEvent,
+  // DashboardTileEvent,
+  // DashboardTileExploreEvent,
+  // DrillMenuEvent,
+  // DrillModalExploreEvent,
+  // EnvClientDialogEvent,
+  // ExploreEvent,
+  // LookEvent,
   LookerEmbedSDK,
-  PageChangedEvent,
-  PagePropertiesChangedEvent,
-  SessionStatus,
-  SessionTokenRequest,
+  // PageChangedEvent,
+  // PagePropertiesChangedEvent,
+  // SessionStatus,
+  // SessionTokenRequest,
 } from '@looker/embed-sdk'
 
 function App() {
