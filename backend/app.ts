@@ -10,7 +10,7 @@ dotenv.config()
 const app = express()
 const port = 3000
 const session_reference_store: { [key: string]: string } = {}
-const session_key = 'johnny-embed'
+const session_key = 'johnny-embed' // Simulating storing the token data (in this case, only for this particular user)
 
 app.use(
   cors({
@@ -29,6 +29,7 @@ app.get('/acquire-embed-session', async (req: Request, res: Response) => {
   console.log('acquiring session')
   try {
     const userAgent = req.headers['user-agent']
+    // Mirror signed URL use case of multiple iframes, where subsequent iframes inherit the cookie from the first session
     const session_reference_token = session_reference_store[session_key] ?? ''
     const request = {
       ...user,
@@ -43,10 +44,42 @@ app.get('/acquire-embed-session', async (req: Request, res: Response) => {
       }),
     )
 
+    // Example Response:
+    //
+    // {
+    //   "authentication_token": [authentication token],
+    //   "authentication_token_ttl": 30,
+    //   "navigation_token": [navigation token],
+    //   "navigation_token_ttl": 304,
+    //   "api_token": [api token],
+    //   "api_token_ttl": 304,
+    //   "session_reference_token": [session reference token],
+    //   "session_reference_token_ttl": 2792
+    // }
+
+    const {
+      authentication_token,
+      authentication_token_ttl,
+      navigation_token,
+      navigation_token_ttl,
+      session_reference_token_ttl,
+      api_token,
+      api_token_ttl,
+    } = response
+
+    // Must be stored securely and not exposed in browser
     session_reference_store[session_key] =
       response.session_reference_token as string
 
-    res.send(response)
+    res.json({
+      authentication_token,
+      authentication_token_ttl,
+      navigation_token,
+      navigation_token_ttl,
+      session_reference_token_ttl,
+      api_token,
+      api_token_ttl,
+    })
   } catch (err: any) {
     res.status(400).send({ message: err.message })
     console.error('embed session acquire failed', { err })
