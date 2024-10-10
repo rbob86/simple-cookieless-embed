@@ -10,7 +10,9 @@ dotenv.config()
 const app = express()
 const port = 3000
 const session_reference_store: { [key: string]: string } = {}
-const session_key = 'johnny-embed' // Simulating storing the token data (in this case, only for this particular user)
+// Simulating storing the token data (in this case, only for this particular user)
+// This should be stored securely, for each user, in a backend session cookie, a distriuted cache, etc.
+const session_key = 'johnny-embed'
 
 app.use(
   cors({
