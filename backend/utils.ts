@@ -18,6 +18,6 @@ export const user: LookerEmbedUser = {
     'download_without_limit',
     'create_alerts',
   ],
-  models: ['Runner', 'thelook'],
+  models: ['Runner', 'thelook', 'geo-test'],
   user_attributes: { locale: 'en_US' },
 }

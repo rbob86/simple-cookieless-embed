@@ -2,12 +2,12 @@
   "name": "cookieless-embedding-demo",
   "version": "1.0.0",
   "description": "TypeScript demo for Looker Cookieless Embedding",
-  "main": "server.js",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node ./dist/server.js",
-    "dev": "nodemon --exec ts-node ./server.ts"
+    "start": "ts-node ./dist/app.ts",
+    "dev": "nodemon --exec ts-node ./app.ts"
   },
   "keywords": [],
   "author": "",
